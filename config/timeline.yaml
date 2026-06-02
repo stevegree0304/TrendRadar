@@ -398,6 +398,56 @@ custom:
   name: "自定义"
   description: "完全自由定义时间段、日计划和周映射。"
 
+  default:
+    collect: true
+    analyze: false
+    ai_mode: "current"
+    push: false
+    report_mode: "current"
+    once:
+      analyze: true
+      push: true
+
+  periods:
+    morning_summary:
+      name: "早间简报"
+      start: "06:30"
+      end: "07:30"
+      analyze: true
+      ai_mode: "daily"
+      report_mode: "daily"
+      once:
+        analyze: true
+        push: true
+
+    evening_summary:
+      name: "晚间汇总"
+      start: "21:30"
+      end: "22:30"
+      analyze: true
+      ai_mode: "daily"
+      report_mode: "daily"
+      once:
+        analyze: true
+        push: true
+
+  day_plans:
+    workday:
+      periods: ["morning_summary", "evening_summary"]
+    weekend:
+      periods: ["morning_summary", "evening_summary"]
+
+  week_map:
+    1: "workday"
+    2: "workday"
+    3: "workday"
+    4: "workday"
+    5: "workday"
+    6: "weekend"
+    7: "weekend"
+
+  overlap:
+    policy: "error_on_overlap"
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   # 默认配置
   #
